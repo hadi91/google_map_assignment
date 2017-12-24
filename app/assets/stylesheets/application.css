@@ -22,6 +22,12 @@
    font-family: sans-serif, arial;
  }
 
+ .alert {
+   text-align: center;
+   color: red;
+   margin-top: 20px;
+ }
+
 
  /* Log in Page */
 
