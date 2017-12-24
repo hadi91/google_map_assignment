@@ -1,0 +1,15 @@
+<nav class="top_navbar">
+  <p class="logged_in">
+    <% if user_signed_in? %>
+    Logged in as <strong><%= current_user.email %></strong>
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+  </p>
+    <% end %>
+</nav>
+<div id="floating-panel">
+  <h1>Find Your Location Now!</h1>
+  <input type="text" id="address" placeholder="select your location">
+  <input id="submit" type="button" value="Submit" class="button">
+</div>
+
+<div id="map"></div>

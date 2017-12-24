@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  address: MyText
+  date: 2017-12-23
+  description: MyText
+  user: one
+
+two:
+  address: MyText
+  date: 2017-12-23
+  description: MyText
+  user: two

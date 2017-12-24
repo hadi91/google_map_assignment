@@ -1,0 +1,15 @@
+
+
+<%= form_for @map, url: maps_path, method: :post do |f| %>
+<%= f.text_field :address, label: "Address", id: "address"%>
+<br>
+<%= f.text_field :description, label: "Description" %>
+<br>
+<%= f.text_field :date %>
+<br>
+
+<%= f.submit "search", :id => "submit"%>
+
+<% end %>
+
+<div id="map"></div>
