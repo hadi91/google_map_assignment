@@ -20,6 +20,7 @@
 function initMap() {
   var addressAuto = document.getElementById('address');
   var mapID = document.getElementById('map');
+  var geolocation;
   var uluru = {
     lat: 1.352083,
     lng: 103.81983600000001
@@ -28,11 +29,12 @@ function initMap() {
     center: uluru,
     zoom: 9
   });
-
   var autocomplete = new google.maps.places.Autocomplete(addressAuto);
+
 
   var geocoder = new google.maps.Geocoder();
   var submit = document.getElementById('submit');
+
 
   submit.addEventListener('click', function(){
     geocodeAddress(geocoder, map);
@@ -62,11 +64,30 @@ function geocodeAddress(geocoder, resultsMap) {
       marker.addListener('click', function(){
         infowindow.open(map, marker);
       });
-
-      var submit = document.getElementById('submit');
-      submit.submit();
     } else {
       alert('The search was not successful because ' + status);
     }
   });
+}
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      var circle = new google.maps.Circle({
+        center: geolocation,
+        radius: 1000
+      });
+      var addressAuto = document.getElementById('address');
+      var autocomplete = new google.maps.places.Autocomplete(addressAuto);
+      autocomplete.setBounds(circle.getBounds());
+    });
+  }
+}
+
+function initialize() {
+    initMap();
+    geolocate();
 }
